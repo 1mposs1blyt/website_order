@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "../components/head.html" %}
+  <body >
+    {% include "../components/navbar.html" %}
+    <div class="container pt-5 w-100 h-50">
+      <div
+        class="
+          p-3
+          bg-info bg-opacity-10
+          border border-info border-start-0 border-end-0
+          text-center
+          mb-5
+        "
+      >
+        Привет, {{user.name.split(' ',1)}}! Выбери чем сегодня будешь
+        заниматься!
+      </div>
+      <div
+        class="
+          row
+          row-cols-12
+          row-cols-sm-12
+          row-cols-md-12
+          row-cols-lg-12
+          row-cols-xl-12
+          row-cols-xxl-12
+        "
+      >
+        {% asyncAll item in resolve %}
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
+          <a href="/exercises/{{item.name}}" style="text-decoration: none">
+            <div class="card border-info" style="max-width: 540px">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img
+                    src="{{item.image}}"
+                    class="img-fluid rounded-start"
+                    alt="Картинка потерялась =("
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{item.cardtitle}}</h5>
+                    <p class="card-text">{{item.cardtext}}</p>
+                    <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% else %}
+        <li>Кажется данные потерлись где-то по дороге =(</li>
+        {% endall %}
+      </div>
+    </div>
+  </body>
+</html>

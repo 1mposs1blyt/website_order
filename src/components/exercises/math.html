@@ -1,0 +1,71 @@
+{#{% include "./ex"+uid+".html"%}#}
+<!-- <iframe class="mb-3" frameborder="0" style="border:none;width:100%;height:450px;" width="100%" height="450" src="https://music.yandex.ru/iframe/playlist/yamusic-bestsongs/10159574">Слушайте <a href='https://music.yandex.ru/users/yamusic-bestsongs/playlists/10159574'>Лучшее: INTERWORLD</a> — <a href='https://music.yandex.ru/users/yamusic-bestsongs'>Яндекс Музыка</a> на Яндекс Музыке</iframe> -->
+<!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO36JG36?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
+<!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/4KAtLRVIfB0bKnRY01dveY?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
+<form method="post" id="checkAnswersForm">
+  <div
+    class="
+      p-3
+      bg-success bg-opacity-10
+      border border-success border-start-0 border-end-0
+      text-center
+      mb-3
+    "
+    id="result"
+    hidden
+  ></div>
+  <div
+    class="
+      row
+      row-cols-12
+      row-cols-sm-12
+      row-cols-md-12
+      row-cols-lg-12
+      row-cols-xl-12
+      row-cols-xxl-12
+    "
+  >
+    {% for item in problems %}
+    <div
+      class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 pt-3 pb-3"
+    >
+      <div id="card{{item.id}}" class="shadow-sm card border-info">
+        <div class="card-body">
+          <p class="card-text user-select-none">
+            Посчитай: {{item.num1}} {{item.operator1}} {{item.num2}}
+            {{item.operator2}} {{item.num3}} {{item.operator3}} {{item.num4}}
+            {{item.operator4}} {{item.num5}} {{item.operator5}} {{item.num6}}
+            {{item.operator6}} {{item.num7}}
+          </p>
+          <div class="input-group mb-3">
+            <span class="input-group-text">Ответ:</span>
+            <input
+              type="text"
+              id="{{item.id}}"
+              class="form-control"
+              name="answer"
+              value=""
+            />
+            <input
+              type="text"
+              id="correctAnswer{{item.id}}"
+              class="form-control text-center bg-success bg-opacity-50 text-light"
+              name="correctAnswer"
+              hidden
+              value="{{item.correctAnswer}}"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <li>Кажется данные потерялись где-то по дороге</li>
+    {% endfor %}
+  </div>
+  <input
+    type="submit"
+    value="Завершить"
+    class="btn btn-success w-100 mb-3"
+    id="submit-btn"
+  />
+</form>

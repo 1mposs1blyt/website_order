@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "./../components/head.html" %}
+  <body  >
+    {% include "./../components/navbar.html" %}
+    <div class="container pt-5 w-100 h-50">
+      <div
+        class="
+          p-3
+          bg-warning bg-opacity-10
+          border border-warning border-start-0 border-end-0
+          text-center
+          mb-3
+        "
+      >
+        Удачи решить все примеры! За каждый правильный ответ дают баллы, но за
+        неправильные ответы их вычитают!
+      </div>
+      {% include "./../components/exercises/math.html"%} {#{% include
+      "./../components/exercises/"+resolve[0].type+".html"%}#}
+      <div
+        class="
+          row
+          row-cols-12
+          row-cols-sm-12
+          row-cols-md-12
+          row-cols-lg-12
+          row-cols-xl-12
+          row-cols-xxl-12
+        "
+      >
+        <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-6 mb-5">
+          <a href="/exercises/" style="text-decoration: none">
+            <div class="card text-center" style="max-width: 540px">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <h5 class="card-title">home</h5>
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >Вернутся на главную</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div>
+      </div>
+    </div>
+  </body>
+  <script src="/static/js/checkAnswers.js"></script>
+</html>

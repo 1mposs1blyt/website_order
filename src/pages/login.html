@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "../components/head.html" %}
+  <body  >
+    {% include "../components/navbar.html" %}
+    <div class="container pt-5 w-100 h-50">
+      <div
+        class="
+          p-3
+          bg-info bg-opacity-10
+          border border-info border-start-0 border-end-0
+          text-center
+        "
+      >
+        Добро пожаловать на My smiley online training
+      </div>
+
+      <div
+        class="
+          row
+          row-cols-12
+          row-cols-sm-12
+          row-cols-md-12
+          row-cols-lg-12
+          row-cols-xl-12
+          row-cols-xxl-12
+        "
+      >
+        <div class="col-0 col-sm-0 col-md-0 col-lg-4 col-xl-4 col-xxl-4"></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+          <div class="text-center pt-2 pb-2">
+            <img
+              width="370"
+              height="370"
+              src="/static/images/jesus.png"
+            />
+            <!-- src="https://img.freepik.com/free-vector/hand-drawn-kawaii-jesus-illustration_23-2149874727.jpg?w=1380&t=st=1705861115~exp=1705861715~hmac=9a139ac33ac3b64dfd17529d87fd96ac839958f0e87f449639b8708f3a4b30df" -->
+          </div>
+        </div>
+        <div class="col-0 col-sm-0 col-md-0 col-lg-4 col-xl-4 col-xxl-4"></div>
+      </div>
+      <div
+        class="
+          row
+          row-cols-12
+          row-cols-sm-12
+          row-cols-md-12
+          row-cols-lg-12
+          row-cols-xl-12
+          row-cols-xxl-12
+        "
+      >
+        <div class="col-0 col-sm-0 col-md-0 col-lg-4 col-xl-4 col-xxl-4"></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+          <div id="badresult" hidden>Логин или пароль неверный</div>
+          <div id="goodresult" hidden>Успешно</div>
+          <form id="loginform" class="pb-4">
+            <div class="mb-3">
+              <label for="login" class="form-label">Логин</label>
+              <input type="text" class="form-control" id="login" name="login" autocomplete="username" />
+            </div>
+            <div class="mb-3">
+              <label for="Password" class="form-label">Пароль</label>
+              <input
+                type="password"
+                class="form-control"
+                id="Password"
+                name="password"
+                autocomplete="current-password"
+              />
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary w-100 flex">
+                Войти
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-0 col-sm-0 col-md-0 col-lg-4 col-xl-4 col-xxl-4"></div>
+      </div>
+    </div>
+  </body>
+  <script src="/static/js/login.js"></script>
+</html>

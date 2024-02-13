@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "../components/head.html" %}
+  <body>
+    {% include "../components/navbar.html" %}
+    <div class="container pt-5 w-100 h-50">
+      {% if user.type == 'teacher'%}
+      <h1 class="text-center">Мой {{user.group}} класс</h1>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col"><i class="bi bi-person"></i>Ученик</th>
+            <th class="d-none d-lg-table-cell" scope="col">
+              <i class="bi bi-person"></i>Класс
+            </th>
+            <th class="d-none d-lg-table-cell" scope="col">Сдано ДЗ</th>
+            <th class="d-none d-lg-table-cell" scope="col">ДЗ выполнены №</th>
+            <th class="d-none d-lg-table-cell" scope="col">Счёт</th>
+            <th scope="col">Логин</th>
+            <th scope="col">Пароль</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% asyncEach item in users %}
+          <tr>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.name}}</td>
+            <td class="d-none d-lg-table-cell">{{item.groop}}</td>
+            <td class="d-none d-lg-table-cell">
+              {{item.completedhomeworks.split(',').length-2}}
+            </td>
+            <td class="d-none d-lg-table-cell">
+              {{item.completedhomeworks.split('0,')[1].split(',')}}
+            </td>
+            <td class="d-none d-lg-table-cell">{{item.score}}</td>
+            <td>{{item.login}}</td>
+            <td>{{item.password}}</td>
+          </tr>
+          {% else %}
+          <li>Ошибка загрузки учеников</li>
+          {% endeach %}
+        </tbody>
+      </table>
+      <div
+        class="
+          p-3
+          bg-success bg-opacity-10
+          border border-success border-start-0 border-end-0
+          text-center
+          mt-3
+          mb-3
+        "
+      >
+        Задать домашнее задание:
+      </div>
+      <div id="hwbadresult" hidden>Логин или пароль неверный</div>
+      <div id="hwgoodresult" hidden>Успешно</div>
+      <form method="post" id="AddHomework-form">
+        <div class="row mb-3">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Заголовок"
+              name="cardtitle"
+              required
+            />
+            <div class="form-text">Заголовок карточки с домашним заданием</div>
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Описание домашки"
+              name="cardtext"
+              required
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ссылка на картинку"
+              name="cardimage"
+            />
+            <div class="form-text">
+              Желательно выбирать квадратные картинки <br />Необязательно, при
+              пустом поле картинка будет добавлена автоматически
+            </div>
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ссылка на домашнее задание"
+              name="cardlink"
+              id="cardlink"
+              required
+            />
+            <div class="form-text">
+              Вводится в формате:
+              <br />/exercises/сложность/кол-во_цифр_в_числе/кол-во_чисел/кол-во_примеров
+              <br />Например: /exercises/easy/2/3/15
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Время на выполнение (В днях):"
+            name="expiretime"
+            required
+          />
+          <div class="form-text mb-3">
+            Вводится в днях, 1-365 автоматически удаляется через указанное время
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <button class="btn btn-success w-100" type="submit">Создать</button>
+          </div>
+        </div>
+      </form>
+      {% elif user.type == 'student' %}
+      <table class="table table-striped table-hover table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <!-- <th scope="col">Ученик</th> -->
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Класс</th>
+            <th scope="col">Счёт</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% asyncEach item in users %} {% if user.id == item.id%}
+          <tr class="table-primary">
+            <th scope="row">Я</th>
+            <!-- <td>{{item.name}}</td> -->
+            <td>{{item.name.split(' ')[0]}}</td>
+            <td>{{item.name.split(' ')[1]}}</td>
+            <td>{{item.groop}}</td>
+            <td>{{item.score}}</td>
+          </tr>
+          {% else %}
+          <tr>
+            <th scope="row"></th>
+            <!-- <td>{{item.name}}</td> -->
+            <td>{{item.name.split(' ')[0]}}</td>
+            <td>{{item.name.split(' ')[1]}}</td>
+            <td>{{item.groop}}</td>
+            <td>{{item.score}}</td>
+          </tr>
+          {% endif %} {% else %}
+          <li>Ошибка загрузки учеников</li>
+          {% endeach %}
+        </tbody>
+      </table>
+      {%else%}
+      <table class="table table-striped table-hover">
+        Ошибка при загрузке данных!
+      </table>
+      {%endif%}
+      <div
+        class="
+          row
+          row-cols-12
+          row-cols-sm-12
+          row-cols-md-12
+          row-cols-lg-12
+          row-cols-xl-12
+          row-cols-xxl-12
+        "
+      >
+        <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div>
+        <!-- <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-6 mb-5">
+          <a href="/exercises/" style="text-decoration: none">
+            <div class="card mb-3 text-center" style="max-width: 540px">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <h5 class="card-title">home</h5>
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >Вернуться на главную</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div> -->
+        <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div>
+      </div>
+    </div>
+  </body>
+  {% if user.type == 'teacher'%}
+  <script src="../static/js/createhomework.js"></script>
+  <script src="https://unpkg.com/imask@7.3.0/dist/imask.js"></script>
+  {%endif%}
+</html>
