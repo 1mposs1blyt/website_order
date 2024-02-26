@@ -34,10 +34,11 @@ form.addEventListener("submit", (event) => {
       url: currentUrl,
     })
     .then(async function (response) {
-      console.log(response.data.CHW);
+      console.log(response.data);
+      // console.log(response.data.newscore);
       $("body,html").animate({ scrollTop: 0 }, 500);
       await delay(700);
-      let UserScore = response.data.score;
+      let UserScore = response.data.score + response.data.newscore;
       $("input.form-control").prop("disabled", true);
       $("#submit-btn").prop("hidden", true);
       console.log(correctAnswer, answer);

@@ -3,23 +3,22 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-
-  const inputElement = document.querySelector('#cardlink') // ищем наш единственный input
-  const maskOptions = { // создаем объект параметров
-    mask: '/exercises/[aaaa]/{0}/{0}/{0}'//'+{7}(000)000-00-00' // задаем единственный параметр mask
-    // easy // hard // norm //
-  }
-  IMask(inputElement, maskOptions) // запускаем плагин с переданными параметрами
-
-})
-
+document.addEventListener("DOMContentLoaded", () => {
+  const inputElement = document.querySelector("#cardlink_href"); // ищем наш единственный input
+  const maskOptions = {
+    // создаем объект параметров
+    // regex : /\+ - \* \*\* :/i,
+    mask: `{0}/{0}/{0}/{000}`, //'+{7}(000)000-00-00' // задаем единственный параметр mask ///+ - * ** :/i
+  };
+  IMask(inputElement, maskOptions); // запускаем плагин с переданными параметрами
+});
 
 HWAddform.addEventListener("submit", (event) => {
   let formData = new FormData(HWAddform);
   let cardtitle = formData.get("cardtitle");
   let cardtext = formData.get("cardtext");
   let link = formData.get("cardlink");
+  let znaki = formData.get("cardlink_symbols");
   let image = formData.get("cardimage");
   let expiretime = formData.get("expiretime");
   event.preventDefault();
@@ -28,9 +27,10 @@ HWAddform.addEventListener("submit", (event) => {
       cardtitle: cardtitle,
       cardtext: cardtext,
       image: image,
-      link: link,
+      link: "/exercises/" + znaki + "/" + link,
       expiretime: expiretime,
     })
+    
     .then(async function (response) {
       $("#AddHomework-form")[0].reset();
       $("#hwgoodresult")

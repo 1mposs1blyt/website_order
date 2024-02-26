@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "./../../../src/components/head.html" %}
+  <body>
+    {% include "./../../../src/components/navbar.html" %}
+    <div class="container pt-5 w-100 h-50">
+      <div
+        class="
+          p-3
+          bg-info bg-opacity-10
+          border border-info border-start-0 border-end-0
+          text-center
+          mb-5
+        "
+      >
+        Задание на устное вычисление, запиши ответы в тетрадь, а потом проверь
+        себя
+      </div>
+      <div class="row justify-content-center">
+        <div
+          class="
+            col-sm-auto
+            col-md-auto
+            col-lg-6
+            col-xl-auto
+            col-xl-auto
+            col-xxl-auto
+            mb-3
+          "
+        >
+          
+          
+
+          <!-- <a href="#/exercises/audio" style="text-decoration: none"> -->
+          <div class="card border-info" style="max-width: 540px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="https://img.freepik.com/free-vector/disk-jockey-sticker-icons-hand-drawn-coloring-vector_528110-168.jpg?t=st=1708918937~exp=1708922537~hmac=e8639fa9f202f4f7a25c251d992747af06a98fb1e1deca993da228b82e0206aa&w=1380"
+                  class="img-fluid rounded-start"
+                  alt="Картинка потерялась =("
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Аудио задание №{{exnumber}}</h5>
+                  <p class="card-text"><audio controls src="/static/audio/{{exnumber}}.mp3"></audio></p>
+                  <p class="card-text">Не работает аудио? <small class="text-body-secondary"><a href="/static/audio/{{exnumber}}.mp3" style="text-decoration: none">Прямая ссылка -></a></small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </a> -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

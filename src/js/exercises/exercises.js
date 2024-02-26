@@ -1,19 +1,18 @@
 import { app } from "./../server.js";
-import { generateProblems } from "./../generator.js";
+import { generateProblems, generateProblems2 } from "./../generator.js";
 import { client } from "./../sessions.js";
 import { get_data } from "./../db.js";
-import localStorage from "localStorage";
 
 app.get("/exercises", async (req, res) => {
   console.log(req.sessionID);
   let RisAuthorized = await client.get(`${req.session.id}`);
-  // console.log(`redis:`, await client.get(`${req.session.id}`));
   if (RisAuthorized) {
     let user = JSON.parse(await client.get(`${req.session.id}`));
     console.log(user);
-    get_data("subjects", []).then((resolve) => {
+    get_data("subjects", []).then((subjects) => {
+      console.log(subjects);
       res.render("./src/pages/main.html", {
-        resolve,
+        subjects,
         user,
       });
     });
@@ -23,14 +22,20 @@ app.get("/exercises", async (req, res) => {
 });
 app.get("/exercises/:type", async (req, res) => {
   let type = req.params["type"];
+  console.log(type);
   let RisAuthorized = await client.get(`${req.session.id}`);
-  console.log(`redis:`, await client.get(`${req.session.id}`));
   if (RisAuthorized) {
     let user = JSON.parse(await client.get(`${req.session.id}`));
-    res.render("./src/pages/routes/digits.html", {
-      user,
-      type,
-    });
+    if (type == "audio") {
+      let exnumber = Math.floor(Math.random() * 10);
+
+      res.render("./src/pages/routes/audio.html", { user, exnumber });
+    } else {
+      res.render("./src/pages/routes/digits.html", {
+        user,
+        type,
+      });
+    }
   } else {
     res.redirect("/login");
   }
@@ -50,10 +55,12 @@ app.get("/exercises/:type/:digits", async (req, res) => {
     res.redirect("/login");
   }
 });
+
 app.get("/exercises/:type/:digits/:quantity", async (req, res) => {
   let type = req.params["type"];
   let digits = req.params["digits"];
   let quantity = req.params["quantity"];
+  let isfloat = req.params["digits"];
   let RisAuthorized = await client.get(`${req.session.id}`);
   if (RisAuthorized) {
     let user = JSON.parse(await client.get(`${req.session.id}`));
@@ -62,6 +69,7 @@ app.get("/exercises/:type/:digits/:quantity", async (req, res) => {
       digits,
       type,
       quantity,
+      isfloat,
     });
   } else {
     res.redirect("/login");
@@ -70,103 +78,105 @@ app.get("/exercises/:type/:digits/:quantity", async (req, res) => {
 app.get(
   "/exercises/:type/:digits/:quantity/:exercisequantity",
   async (req, res) => {
-    function send(type, problems, user) {
-      get_data("addScore", [user.id]).then(() => {
-        get_data("FindScore", [user.id]).then((resolve) => {
-          let score = resolve[0].score;
-          res.render(`./src/pages/exercise.html`, {
-            problems,
-            user,
-            score,
-            type,
-          });
+    let type = req.params["type"];
+    let digits = req.params["digits"];
+    let exercisequantity = req.params["exercisequantity"];
+    let isfloat = req.params["digits"];
+    let quantity = req.params["quantity"];
+    let RisAuthorized = await client.get(`${req.session.id}`);
+    if (RisAuthorized) {
+      let user = JSON.parse(await client.get(`${req.session.id}`));
+      res.render(`./src/pages/routes/isfloat.html`, {
+        user,
+        digits,
+        type,
+        isfloat,
+        quantity,
+        exercisequantity,
+      });
+    } else {
+      res.redirect("/login");
+    }
+  }
+);
+app.get(
+  "/exercises/:type/:digits/:quantity/:exercisequantity/:float",
+  async (req, res) => {
+    function send(type, problems, user, isfloat, exercisequantity) {
+      // get_data("addScore", [user.id]).then(() => {
+      get_data("FindScore", [user.id]).then((resolve) => {
+        let score = resolve[0].score;
+        res.render(`./src/pages/exercise.html`, {
+          problems,
+          user,
+          score,
+          type,
+          isfloat,
+          exercisequantity,
         });
       });
+      // });
     }
     let type = req.params["type"];
     let digits = req.params["digits"];
     let quantity = req.params["quantity"];
     let exercisequantity = req.params["exercisequantity"];
     let RisAuthorized = await client.get(`${req.session.id}`);
+    let isfloat = req.params["float"];
     console.log(`redis:`, await client.get(`${req.session.id}`));
     if (RisAuthorized) {
       let user = JSON.parse(await client.get(`${req.session.id}`));
-      if (type == "easy") {
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["+", "-"]
-        );
-        send(type, problems, user);
-      } else if (type == "norm") {
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["*", "/"]
-        );
-        send(type, problems, user);
-      } else if (type == "medi") {
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["/", "-"]
-        );
-        send(type, problems, user);
-      } else if (type == "hard") {
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["+", "*"]
-        );
-        send(type, problems, user);
-      } else if (type == "ultr") {
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["+", "*", "/", "-"]
-        );
-        send(type, problems, user);
-      } else if (type == "ultramegahard") {
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["+", "*", "/", "-", "%", "**"]
-        );
-        send(type, problems, user);
-      } else if (type == "mlow") {
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["*", "/"]
-        );
-        send(type, problems, user);
-      } else if (type == "audio") {
+      if (type == "audio") {
         let filename = `./src/audiofiles/D${digits}Q${quantity}E${exercisequantity}.mp3`;
         res.send("pagewith audio files" + ` ${filename}`);
       } else {
-        console.log(type);
-        let problems = generateProblems(
-          type,
-          exercisequantity,
-          digits,
-          quantity,
-          ["+", "-", "*", "-"]
-        );
-        send(type, problems, user);
+        if (isfloat == 0) {
+          let znaki = type.split(",");
+          znaki[znaki.indexOf(":")] = "/";
+          let problems = generateProblems(
+            type,
+            exercisequantity,
+            digits,
+            quantity,
+            znaki
+          );
+          send(type, problems, user);
+        } else {
+          let znaki = type.split(",");
+          znaki[znaki.indexOf(":")] = "/";
+          let problems = generateProblems2(
+            type,
+            exercisequantity,
+            digits,
+            quantity,
+            znaki,
+            isfloat
+          );
+          send(type, problems, user);
+        }
+
+        // let znaki = type.split(",");
+        // if (isfloat == "true") {
+        //   let problems = generateProblems2(
+        //     type,
+        //     exercisequantity,
+        //     digits,
+        //     quantity,
+        //     znaki,
+        //     toFixed
+        //   );
+        //   send(type, problems, user);
+        // } else {
+        //   let problems = generateProblems(
+        //     type,
+        //     exercisequantity,
+        //     digits,
+        //     quantity,
+        //     znaki
+        //   );
+        //   znaki[znaki.indexOf(":")] = "/";
+        //   send(type, problems, user);
+        // }
       }
     } else {
       res.redirect("/login");
@@ -177,8 +187,9 @@ app.post("/checkanswers", async (req, res) => {
   let url = req.body.url.split("?")[1];
   let RisAuthorized = await client.get(`${req.session.id}`);
   console.log(`redis:`, await client.get(`${req.session.id}`));
-  function send(newscore, userid) {
+  function send(userid, newscore) {
     get_data("addScore", [newscore, userid]);
+    get_data("addScoreEx", [userid]);
     get_data("FindScore", [userid]).then((resolve1) => {
       if (typeof url != "undefined") {
         let HWID = req.body.url.split("?")[1].split("&")[1].split("=")[1];
@@ -189,18 +200,19 @@ app.post("/checkanswers", async (req, res) => {
             get_data("homeworkComplit2", [newHWID, userid]);
             let score = resolve1[0].score;
             let CHW = resolve1[0].completedhomeworks;
-            res.send({ body, score, CHW });
+            res.send({ body, score, CHW, newscore });
           } else {
             let newHWID = CompletedHomeworks[0].completedhomeworks + HWID + ",";
             get_data("homeworkComplit2", [newHWID, userid]);
             let score = resolve1[0].score;
             let CHW = resolve1[0].completedhomeworks;
-            res.send({ body, score, CHW });
+
+            res.send({ body, score, CHW, newscore });
           }
         });
       } else {
         let score = resolve1[0].score;
-        res.send({ body, score });
+        res.send({ body, score, newscore });
       }
     });
   }
@@ -213,28 +225,10 @@ app.post("/checkanswers", async (req, res) => {
     var type = req.body.type;
     var digits = req.body.digits;
     console.log({ correctAnswers, wrongAnswers, type, digits });
-    if (type == "easy") {
-      let score = correctAnswers * digits - wrongAnswers * 1;
-      send(score, userid);
-    } else if (type == "normal") {
-      let score = correctAnswers * (digits + 1) - wrongAnswers * 1;
-      send(score, userid);
-    } else if (type == "medium") {
-      let score = correctAnswers * (digits + 2) - wrongAnswers * 2;
-      send(score, userid);
-    } else if (type == "hard") {
-      let score = correctAnswers * (digits + 3) - wrongAnswers * 3;
-      send(score, userid);
-    } else if (type == "ultrahard") {
-      let score = correctAnswers * (digits + 4) - wrongAnswers * 4;
-      send(score, userid);
-    } else if (type == "ultramegahard") {
-      let score = correctAnswers * (digits + 5) - wrongAnswers * 5;
-      send(score, userid);
-    } else {
-      let score = correctAnswers * digits - wrongAnswers;
-      send(score, userid);
-    }
+    let ScoreForProblem = type.split(",").length;
+    let newscore =
+      correctAnswers * ScoreForProblem - wrongAnswers * ScoreForProblem;
+    send(userid, newscore);
   } else {
     res.sendStatus(401);
   }

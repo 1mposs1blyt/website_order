@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include "../components/head.html" %}
-  <body >
+  <body>
     {% include "../components/navbar.html" %}
     <div class="container pt-5 w-100 h-50">
       <div
@@ -16,20 +16,22 @@
         Привет, {{user.name.split(' ',1)}}! Выбери чем сегодня будешь
         заниматься!
       </div>
-      <div
-        class="
-          row
-          row-cols-12
+      <div class="row justify-content-center">
+        <!--row row-cols-12
           row-cols-sm-12
           row-cols-md-12
           row-cols-lg-12
           row-cols-xl-12
-          row-cols-xxl-12
-        "
-      >
-        {% asyncAll item in resolve %}
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
-          <a href="/exercises/{{item.name}}" style="text-decoration: none">
+          row-cols-xxl-12 -->
+        {% for item in subjects %}
+        <div
+          class="
+            col-sm-auto col-md-auto col-lg-6 col-xl-auto col-xl-auto col-xxl-auto
+            mb-3
+          "
+        >
+          <!-- col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3 -->
+          <a href="/exercises/{{item.znaki}}" style="text-decoration: none">
             <div class="card border-info" style="max-width: 540px">
               <div class="row g-0">
                 <div class="col-md-4">
@@ -52,7 +54,7 @@
         </div>
         {% else %}
         <li>Кажется данные потерлись где-то по дороге =(</li>
-        {% endall %}
+        {% endfor %}
       </div>
     </div>
   </body>
