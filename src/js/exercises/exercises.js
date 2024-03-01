@@ -27,8 +27,7 @@ app.get("/exercises/:type", async (req, res) => {
   if (RisAuthorized) {
     let user = JSON.parse(await client.get(`${req.session.id}`));
     if (type == "audio") {
-      let exnumber = Math.floor(Math.random() * 10);
-
+      let exnumber = Math.floor(Math.random() * 10) + 1;
       res.render("./src/pages/routes/audio.html", { user, exnumber });
     } else {
       res.render("./src/pages/routes/digits.html", {
@@ -55,7 +54,6 @@ app.get("/exercises/:type/:digits", async (req, res) => {
     res.redirect("/login");
   }
 });
-
 app.get("/exercises/:type/:digits/:quantity", async (req, res) => {
   let type = req.params["type"];
   let digits = req.params["digits"];

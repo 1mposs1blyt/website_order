@@ -9,7 +9,7 @@ async function get_data(query, data_query) {
     }
   });
   let sql_queries = {
-    subjects: "SELECT * FROM subjects ORDER BY id ASC",
+    subjects: "SELECT * FROM subjects ORDER BY LENGTH(znaki) ASC",
     users: `SELECT * FROM users`,
     Dashboard: `SELECT * FROM users WHERE type LIKE ?`,
     FindUser: `SELECT * FROM users WHERE id LIKE ?`,
@@ -19,6 +19,7 @@ async function get_data(query, data_query) {
     AND
     groop LIKE ?
     ORDER BY score DESC`,
+    FindAllUsers:`SELECT * FROM users WHERE type LIKE ?`,
     addScore: `UPDATE users SET score = (score+?) WHERE id LIKE ?`,
     addScoreEx: `UPDATE users SET CompletedEx = (CompletedEx+1) WHERE id LIKE ?`,
     FindScore: `SELECT score FROM users WHERE id LIKE ?`,

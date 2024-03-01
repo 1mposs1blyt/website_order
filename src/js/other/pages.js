@@ -30,10 +30,13 @@ app.get("/dashboard/", async (req, res) => {
       });
     } else if (user.type == "student") {
       get_data("FindUserByType", ["student", user.group]).then((users) => {
-        res.render("./src/pages/dashboard.html", {
-          user,
-          users,
-          isAuthorized: user.isAuthorized,
+        get_data("FindAllUsers", ["student"]).then((allusers) => {
+          res.render("./src/pages/dashboard.html", {
+            user,
+            users,
+            isAuthorized: user.isAuthorized,
+            allusers,
+          });
         });
       });
     } else if (user.type == "admin") {
