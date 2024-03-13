@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% include "./../../../src/components/head.html"   %}
-  <body >
-  {% include "./../../../src/components/navbar.html" %}
+  {% include "./../../../src/components/head.html" %}
+  <body>
+    {% include "./../../../src/components/navbar.html" %}
     <div class="container pt-5 w-100 h-50">
       <div
         class="
@@ -18,6 +18,7 @@
       <div
         class="
           row
+          justify-content-center
           row-cols-12
           row-cols-sm-12
           row-cols-md-12
@@ -26,40 +27,47 @@
           row-cols-xxl-12
         "
       >
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
+        <div class="col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4 mb-3">
           <!-- href="/exercises/{{item.name}}/{{item.quantity}}?id={{item.id}}&digits={{item.digits}}&quantity={{item.digits}}" -->
-          <a href="/exercises/{{type}}/{{digits}}/2" style="text-decoration: none">
-            <div class="card border-info" style="max-width: 540px">
+          <a
+            href="/exercises/{{type}}/{{digits}}/2"
+            style="text-decoration: none"
+          >
+            <div class="card border-info" style="max-width: 540px;height: 100%;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
                     src="https://img.freepik.com/free-vector/flat-design-english-logo-design_23-2149512646.jpg?w=1380&t=st=1705897578~exp=1705898178~hmac=2049787ee8717c529a3cc7c61bc7e96edf5b95aeaadb57c7cb1c570ddbc9e481"
-                    class="img-fluid rounded-start"
+                    class="img-fluid rounded-start rounded-end rounded-top"
                     alt="Картинка потерялась =("
+                  
                   />
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">2 числа</h5>
                     <p class="card-text">
-                      Пример где будет 2 числа и {{digits}} цифры в числе в каждом примере
+                      Пример где будет 2 числа и {{digits}} цифры в числе в
+                      каждом примере
                     </p>
-                    <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
                   </div>
                 </div>
               </div>
             </div>
           </a>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
+        <div class="col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4 mb-3">
           <!-- href="/exercises/{{item.name}}/{{item.quantity}}?id={{item.id}}&digits={{item.digits}}&quantity={{item.digits}}" -->
-          <a href="/exercises/{{type}}/{{digits}}/3" style="text-decoration: none">
-            <div class="card border-info" style="max-width: 540px">
+          <a
+            href="/exercises/{{type}}/{{digits}}/3"
+            style="text-decoration: none"
+          >
+            <div class="card border-info" style="max-width: 540px;height: 100%;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
                     src="https://img.freepik.com/free-vector/flat-design-english-logo-design_23-2149512646.jpg?w=1380&t=st=1705897578~exp=1705898178~hmac=2049787ee8717c529a3cc7c61bc7e96edf5b95aeaadb57c7cb1c570ddbc9e481"
-                    class="img-fluid rounded-start"
+                    class="img-fluid rounded-start rounded-end rounded-top"
                     alt="Картинка потерялась =("
                   />
                 </div>
@@ -67,7 +75,8 @@
                   <div class="card-body">
                     <h5 class="card-title">3 числа</h5>
                     <p class="card-text">
-                      Пример где будет 3 числа и {{digits}} цифры в числе в каждом примере
+                      Пример где будет 3 числа и {{digits}} цифры в числе в
+                      каждом примере
                     </p>
                     <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
                   </div>
@@ -76,15 +85,18 @@
             </div>
           </a>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
+        <div class="col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4 mb-3">
           <!-- href="/exercises/{{item.name}}/{{item.quantity}}?id={{item.id}}&digits={{item.digits}}&quantity={{item.digits}}" -->
-          <a href="/exercises/{{type}}/{{digits}}/4" style="text-decoration: none">
-            <div class="card border-info" style="max-width: 540px">
+          <a
+            href="/exercises/{{type}}/{{digits}}/4"
+            style="text-decoration: none"
+          >
+            <div class="card border-info" style="max-width: 540px;height: 100%;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
                     src="https://img.freepik.com/free-vector/flat-design-english-logo-design_23-2149512646.jpg?w=1380&t=st=1705897578~exp=1705898178~hmac=2049787ee8717c529a3cc7c61bc7e96edf5b95aeaadb57c7cb1c570ddbc9e481"
-                    class="img-fluid rounded-start"
+                    class="img-fluid rounded-start rounded-end rounded-top"
                     alt="Картинка потерялась =("
                   />
                 </div>
@@ -92,7 +104,8 @@
                   <div class="card-body">
                     <h5 class="card-title">4 числа</h5>
                     <p class="card-text">
-                      Пример где будет 4 числа и {{digits}} цифры в числе в каждом примере
+                      Пример где будет 4 числа и {{digits}} цифры в числе в
+                      каждом примере
                     </p>
                     <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
                   </div>
@@ -101,15 +114,18 @@
             </div>
           </a>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
+        <div class="col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4 mb-3">
           <!-- href="/exercises/{{item.name}}/{{item.quantity}}?id={{item.id}}&digits={{item.digits}}&quantity={{item.digits}}" -->
-          <a href="/exercises/{{type}}/{{digits}}/5" style="text-decoration: none">
-            <div class="card border-info" style="max-width: 540px">
+          <a
+            href="/exercises/{{type}}/{{digits}}/5"
+            style="text-decoration: none"
+          >
+            <div class="card border-info" style="max-width: 540px;height: 100%;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
                     src="https://img.freepik.com/free-vector/flat-design-english-logo-design_23-2149512646.jpg?w=1380&t=st=1705897578~exp=1705898178~hmac=2049787ee8717c529a3cc7c61bc7e96edf5b95aeaadb57c7cb1c570ddbc9e481"
-                    class="img-fluid rounded-start"
+                    class="img-fluid rounded-start rounded-end rounded-top"
                     alt="Картинка потерялась =("
                   />
                 </div>
@@ -117,7 +133,8 @@
                   <div class="card-body">
                     <h5 class="card-title">5 чисел</h5>
                     <p class="card-text">
-                      Пример где будет 5 чисел и {{digits}} цифры в числе в каждом примере
+                      Пример где будет 5 чисел и {{digits}} цифры в числе в
+                      каждом примере
                     </p>
                     <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
                   </div>
@@ -126,15 +143,18 @@
             </div>
           </a>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
+        <div class="col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4 mb-3">
           <!-- href="/exercises/{{item.name}}/{{item.quantity}}?id={{item.id}}&digits={{item.digits}}&quantity={{item.digits}}" -->
-          <a href="/exercises/{{type}}/{{digits}}/6" style="text-decoration: none">
-            <div class="card border-info" style="max-width: 540px">
+          <a
+            href="/exercises/{{type}}/{{digits}}/6"
+            style="text-decoration: none"
+          >
+            <div class="card border-info" style="max-width: 540px;height: 100%;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
                     src="https://img.freepik.com/free-vector/flat-design-english-logo-design_23-2149512646.jpg?w=1380&t=st=1705897578~exp=1705898178~hmac=2049787ee8717c529a3cc7c61bc7e96edf5b95aeaadb57c7cb1c570ddbc9e481"
-                    class="img-fluid rounded-start"
+                    class="img-fluid rounded-start rounded-end rounded-top"
                     alt="Картинка потерялась =("
                   />
                 </div>
@@ -142,7 +162,8 @@
                   <div class="card-body">
                     <h5 class="card-title">6 чисел</h5>
                     <p class="card-text">
-                      Пример где будет 6 чисел и {{digits}} цифры в числе в каждом примере
+                      Пример где будет 6 чисел и {{digits}} цифры в числе в
+                      каждом примере
                     </p>
                     <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
                   </div>
@@ -151,15 +172,18 @@
             </div>
           </a>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 pb-3">
+        <div class="col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4 mb-3">
           <!-- href="/exercises/{{item.name}}/{{item.quantity}}?id={{item.id}}&digits={{item.digits}}&quantity={{item.digits}}" -->
-          <a href="/exercises/{{type}}/{{digits}}/7" style="text-decoration: none">
-            <div class="card border-info" style="max-width: 540px">
+          <a
+            href="/exercises/{{type}}/{{digits}}/7"
+            style="text-decoration: none"
+          >
+            <div class="card border-info" style="max-width: 540px;height: 100%;">
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
                     src="https://img.freepik.com/free-vector/flat-design-english-logo-design_23-2149512646.jpg?w=1380&t=st=1705897578~exp=1705898178~hmac=2049787ee8717c529a3cc7c61bc7e96edf5b95aeaadb57c7cb1c570ddbc9e481"
-                    class="img-fluid rounded-start"
+                    class="img-fluid rounded-start rounded-end rounded-top"
                     alt="Картинка потерялась =("
                   />
                 </div>
@@ -167,7 +191,8 @@
                   <div class="card-body">
                     <h5 class="card-title">7 чисел</h5>
                     <p class="card-text">
-                      Пример где будет 7 чисел и {{digits}} цифры в числе в каждом примере
+                      Пример где будет 7 чисел и {{digits}} цифры в числе в
+                      каждом примере
                     </p>
                     <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
                   </div>
@@ -177,34 +202,22 @@
           </a>
         </div>
         <!-- back card -->
-        <div
-          class="
-            row
-            row-cols-12
-            row-cols-sm-12
-            row-cols-md-12
-            row-cols-lg-12
-            row-cols-xl-12
-            row-cols-xxl-12
-          "
-        >
+        <div class="row justify-content-center">
           <div
-            class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"
-          ></div>
-          <div
-            class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-6 mb-5"
+            class="
+              col-sm-auto
+              col-md-auto
+              col-lg-auto
+              col-xl-auto
+              col-xl-auto
+              col-xxl-auto
+              mb-5
+            "
           >
-            <a href="/exercises/{{type}}/" style="text-decoration: none">
-              <div class="card text-center" style="max-width: 540px">
+            <a href="/exercises/{{type}}" style="text-decoration: none">
+              <div class="card text-center shadow-sm card border-danger" style="max-width: 540px;height: 100%;">
                 <div class="row g-0">
-                  <!-- <div class="col-md-4">
-                    <img
-                      src="https://img.freepik.com/premium-vector/arrow-back-icon-previous-direction-symbol-icon-arrow-symbol-left-symbol-returning-arrow-icon_659151-1850.jpg?w=1380"
-                      class="img-fluid rounded-start"
-                      alt="Картинка потерялась!"
-                    />
-                  </div> -->
-                  <div class="col-md-12">
+                  <div class="col-md-auto">
                     <div class="card-body">
                       <h5 class="card-title">Back</h5>
                       <p class="card-text">
@@ -218,9 +231,6 @@
               </div>
             </a>
           </div>
-          <div
-            class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"
-          ></div>
         </div>
         <!-- back card -->
       </div>

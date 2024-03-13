@@ -9,14 +9,14 @@ function appendTeacherCard(homeworks, i, dateSrc) {
   $("#homeworks-result").append(`
                 <div class="card border-info mt-3" style="max-width: 540px">
                   <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-sm-4 col-md-4">
                       <img
                         src="${homeworks[i].image}"
-                        class="img-fluid rounded-start"
+                        class="img-fluid rounded-start rounded-end rounded-top"
                         alt="Картинка потерялась =("
                       />
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-sm-8 col-md-8">
                       <div class="card-body">
                         <h5 class="card-title">${
                           homeworks[i].cardtitle
@@ -41,14 +41,14 @@ function appendstudentCard(homeworks, i, dateSrc) {
   }?homework=true&hwid=${homeworks[i].id}" style="text-decoration: none">
           <div class="card border-info mt-3" style="max-width: 540px">
             <div class="row g-0">
-              <div class="col-md-4">
+              <div class="col-sm-4 col-md-4">
                 <img
                   src="${homeworks[i].image}"
-                  class="img-fluid rounded-start"
+                  class="img-fluid rounded-start rounded-end rounded-top"
                   alt="Картинка потерялась =("
                 />
               </div>
-              <div class="col-md-8">
+              <div class="col-sm-8 col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">${homeworks[i].cardtitle}</h5>
                   <p class="card-text">${homeworks[i].cardtext}</p>

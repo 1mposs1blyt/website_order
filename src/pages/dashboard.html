@@ -154,20 +154,20 @@
             <th scope="col">Имя</th>
             <th scope="col">Фамилия</th>
             <th scope="col">Класс</th>
-            <th scope="col">Счёт</th>
-            <td scope="col">Выполнено заданий</td>
+            <th class="text-center" scope="col">Счёт</th>
+            <td scope="col" class="d-none d-md-table-cell text-center">Выполнено заданий</td>
           </tr>
         </thead>
         <tbody>
           {% asyncEach item in users %} {% if user.id == item.id%}
-          <tr class="table-primary">
+          <tr class="table-info">
             <th scope="row">Я</th>
             <!-- <td>{{item.name}}</td> -->
             <td>{{item.name.split(' ')[0]}}</td>
             <td>{{item.name.split(' ')[1]}}</td>
             <td>{{item.groop}}</td>
-            <td>{{item.score}}</td>
-            <td>{{item.CompletedEx}}</td>
+            <td class="text-center">{{item.score}}</td>
+            <td class="d-none d-md-table-cell text-center">{{item.CompletedEx}}</td>
           </tr>
           {% else %}
           <tr>
@@ -176,8 +176,8 @@
             <td>{{item.name.split(' ')[0]}}</td>
             <td>{{item.name.split(' ')[1]}}</td>
             <td>{{item.groop}}</td>
-            <td>{{item.score}}</td>
-            <td>{{item.CompletedEx}}</td>
+            <td class="text-center">{{item.score}}</td>
+            <td class="d-none d-md-table-cell text-center">{{item.CompletedEx}}</td>
           </tr>
           {% endif %} {% else %}
           <li>Ошибка загрузки учеников</li>
@@ -193,20 +193,20 @@
             <th scope="col">Имя</th>
             <th scope="col">Фамилия</th>
             <th scope="col">Класс</th>
-            <th scope="col">Счёт</th>
-            <td scope="col">Выполнено заданий</td>
+            <th scope="col" class="text-center">Счёт</th>
+            <td scope="col" class="d-none d-md-table-cell text-center">Выполнено заданий</td>
           </tr>
         </thead>
         <tbody>
           {% asyncEach item in allusers %} {% if user.id == item.id%}
-          <tr class="table-primary">
+          <tr class="table-info">
             <th scope="row">Я</th>
             <!-- <td>{{item.name}}</td> -->
             <td>{{item.name.split(' ')[0]}}</td>
             <td>{{item.name.split(' ')[1]}}</td>
             <td>{{item.groop}}</td>
-            <td>{{item.score}}</td>
-            <td>{{item.CompletedEx}}</td>
+            <td class="text-center">{{item.score}}</td>
+            <td class="d-none d-md-table-cell text-center">{{item.CompletedEx}}</td>
           </tr>
           {% else %}
           <tr>
@@ -215,8 +215,8 @@
             <td>{{item.name.split(' ')[0]}}</td>
             <td>{{item.name.split(' ')[1]}}</td>
             <td>{{item.groop}}</td>
-            <td>{{item.score}}</td>
-            <td>{{item.CompletedEx}}</td>
+            <td class="text-center">{{item.score}}</td>
+            <td class="d-none d-md-table-cell text-center">{{item.CompletedEx}}</td>
           </tr>
           {% endif %} {% else %}
           <li>Ошибка загрузки учеников</li>
@@ -228,20 +228,6 @@
         Ошибка при загрузке данных!
       </table>
       {%endif%}
-      <div
-        class="
-          row
-          row-cols-12
-          row-cols-sm-12
-          row-cols-md-12
-          row-cols-lg-12
-          row-cols-xl-12
-          row-cols-xxl-12
-        "
-      >
-        <!-- <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div>
-        <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-3 col-xxl-3"></div> -->
-      </div>
     </div>
   </body>
   {% if user.type == 'teacher'%}

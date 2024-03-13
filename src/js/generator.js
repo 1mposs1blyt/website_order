@@ -26,7 +26,7 @@ function generateProblems(type, exercisequantity, digits, NumQuantity, opers) {
         знаки.push([знак[i], operator]);
       }
     }
-    var znkai = Object.fromEntries(знаки);
+    var znaki = Object.fromEntries(знаки);
     var ВсёВместе = Object.assign(
       Object.fromEntries(знаки),
       Object.fromEntries(номера)
@@ -34,7 +34,7 @@ function generateProblems(type, exercisequantity, digits, NumQuantity, opers) {
     let str = "";
     for (let i = 0; i != номера.length; i++) {
       str += ` ${номера[i][1]} `;
-      str += eval(` znkai.operator${i + 1} `);
+      str += eval(` znaki.operator${i + 1} `);
     }
 
     let toCount = str.replace("undefined", "");
@@ -88,7 +88,7 @@ function generateProblems2(type, exercisequantity, digits, NumQuantity, opers,to
         знаки.push([знак[i], operator]);
       }
     }
-    var znkai = Object.fromEntries(знаки);
+    var znaki = Object.fromEntries(знаки);
     var ВсёВместе = Object.assign(
       Object.fromEntries(знаки),
       Object.fromEntries(номера)
@@ -96,7 +96,7 @@ function generateProblems2(type, exercisequantity, digits, NumQuantity, opers,to
     let str = "";
     for (let i = 0; i != номера.length; i++) {
       str += ` ${номера[i][1]} `;
-      str += eval(` znkai.operator${i + 1} `);
+      str += eval(` znaki.operator${i + 1} `);
     }
 
     let toCount = str.replace("undefined", "");
