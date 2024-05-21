@@ -14,3 +14,35 @@ qrForm.addEventListener("submit", (event) => {
       console.log(err);
     });
 });
+const nameWrapper = document.querySelector(".js-link");
+let link = "";
+function setlink_znaki(name) {
+  if (nameWrapper) {
+    link = link + name;
+    nameWrapper.textContent = link;link = "";
+  }
+}
+function setlink_zifri(name) {
+  if (nameWrapper) {
+    link = link + name;
+    nameWrapper.textContent = link;link = "";
+  }
+}
+function setlink_chisla(name) {
+  if (nameWrapper) {
+    link = link + name;
+    nameWrapper.textContent = link;link = "";
+  }
+}
+function setlink_primery(name) {
+  if (nameWrapper) {
+    link = link + name;
+    nameWrapper.textContent = link;link = "";
+  }
+}
+function types(name) {
+  if (nameWrapper) {
+    link = link + name;
+    nameWrapper.textContent = link;link = "";
+  }
+}

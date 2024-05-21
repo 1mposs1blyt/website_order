@@ -36,12 +36,14 @@ form.addEventListener("submit", (event) => {
     .then(async function (response) {
       console.log(response.data);
       // console.log(response.data.newscore);
+      $("#goodluck").prop("hidden",true)
       $("body,html").animate({ scrollTop: 0 }, 500);
       await delay(700);
       let UserScore = response.data.score + response.data.newscore;
       $("input.form-control").prop("disabled", true);
       $("#submit-btn").prop("hidden", true);
       console.log(correctAnswer, answer);
+     
       for (let i = 0; i < correctAnswer.length; i++) {
         console.log(answer[i], " <---> ", correctAnswer[i]);
         if (answer[i] == correctAnswer[i]) {
@@ -67,6 +69,7 @@ form.addEventListener("submit", (event) => {
         )
         .prop("hidden", false);
       console.log({ CorrectAnswers, WrongAnswers });
+      
     })
     .catch(function (error) {
       console.log(error);

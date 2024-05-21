@@ -29,9 +29,17 @@
         "
       >
         {% for item in subjects %}
-        <div class="col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4 mb-3">
+        <div
+          class="
+            col-auto col-sm-12 col-md-auto col-lg-6 col-xl-6 col-xxl-4
+            mb-3
+          "
+        >
           <a href="/exercises/{{item.znaki}}" style="text-decoration: none">
-            <div class="card border-info" style="max-width: 540px;height: 100%;">
+            <div
+              class="card border-info"
+              style="max-width: 540px; height: 100%"
+            >
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
@@ -43,7 +51,7 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">{{item.cardtitle}}</h5>
-                    <p class="card-text">{{item.cardtext}}</p>
+                    
                     <!-- <p class="card-text"><small class="text-body-secondary"></small></p> -->
                   </div>
                 </div>
@@ -54,7 +62,73 @@
         {% else %}
         <li>Кажется данные потерлись где-то по дороге =(</li>
         {% endfor %}
-      </div>
+        <!-- <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto col-xxl-auto mb-3">
+          <div class="card border-info" style="max-width: 540px; height: 100%">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="https://craftypixels.com/placeholder-image/150x150/ffffff/0900ff&text=Custom!"
+                  class="img-fluid rounded-start rounded-end rounded-top"
+                  alt="Картинка потерялась =("
+                />
+              </div>
+              <div class="col-md-8">
+  
+                <div class="card-body">
+                  <p class="card-text"><a class="js-link"></a></p>
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Знаки через ','"
+                      id="js-link-znaki"oninput="setlink_znaki(this.value)"
+                    />
+                    <span class="input-group-text">@</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="цифры 1-7"
+                      id="js-link-zifri"oninput="setlink_zifri(this.value)"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="числа 2-7"
+                      id="js-link-chisla"oninput="setlink_chisla(this.value)"
+                    />
+                    <span class="input-group-text">@</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="примеры 0-999"
+                      id="js-link-primery"oninput="setlink_primery(this.value)"
+                    />
+                  </div>
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="количество цифр после запятой"
+                      id="js-link-types"oninput="types(this.value)"
+                    />
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- <h1>Привет, Мир!!! Меня зовут <b class="js-name"></b>.</h1>
+        <a id="js-link">ссылка!</a>
+        <input
+          type="text"
+          id="js-input"
+          value="123"
+          oninput="setName(this.value)"
+        />
+      </div> -->
     </div>
   </body>
 </html>

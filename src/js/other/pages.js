@@ -1,11 +1,12 @@
 import { app } from "./../server.js";
 import { client } from "./../sessions.js";
 import { get_data } from "./../db.js";
-
+// import pkg from 'node-localstorage';
+// const { localStorage  } = pkg;
 app.get("/", async (req, res) => {
   console.log(client.sessionid);
   let userdata = JSON.parse(await client.get(`${req.session.id}`));
-  console.log(userdata);
+  // console.log(localStorage.getItem('theme'));
   if (userdata) {
     console.log("Nice");
     res.redirect("/exercises");
